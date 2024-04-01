@@ -6,6 +6,7 @@ from time import sleep
 class BooksPage(BasePage):
     # SELECTORS_____
     LOGIN_BUTTON = '//button[@id="login"]'
+    NUMBER_BOOKS = '//div[@class="action-buttons"]'
 
     # ACTIONS_____
     # def click_login_button(self):
@@ -24,3 +25,8 @@ class BooksPage(BasePage):
         expected = 'https://demoqa.com/books'
         actual = self.driver.current_url
         self.assertEqual(expected, actual, 'Url is incorrect')
+
+    def validate_books_count(self, expected_number):
+        sleep(1)
+        actual = len(self.driver.find_elements(By.XPATH, self.NUMBER_BOOKS))
+        self.assertEqual(expected_number, actual, 'Number of books incorrect')

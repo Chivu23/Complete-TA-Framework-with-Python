@@ -12,3 +12,8 @@ def step_impl(context):
 @then('books: I should land on books page')
 def step_impl(context):
     books_page.validate_correct_url()
+
+
+@then('books: I validate that 8 books are displayed')
+def step_impl(context):
+    books_page.validate_books_count(8)
