@@ -9,5 +9,5 @@ class LeftMenu(BasePage):
     # ACTIONS_____
     def click_profile_section(self):
         self.wait_for_elem(self.LOGIN_BUTTON)
-        self.driver.find_element(By.XPATH, self.LOGIN_BUTTON).click()
-
+        element = self.driver.find_element(By.XPATH, self.LOGIN_BUTTON).click()
+        self.driver.execute_script("arguments[0].click();", element)

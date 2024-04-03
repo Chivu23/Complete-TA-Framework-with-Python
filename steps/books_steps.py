@@ -20,8 +20,7 @@ def step_impl(context, query):
 def step_impl(context, title):
     books_page.click_book_by_title(title)
     books_page.click_add_to_your_collection_button()
-    books_page.alert_ok()
-    books_page.click_back_to_book_store_button()
+    books_page.browser_back()
 
 
 @when('book: I clear search input')
