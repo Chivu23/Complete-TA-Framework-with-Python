@@ -1,5 +1,6 @@
 from pages.books_page import BooksPage
 from behave import *
+from time import sleep
 
 books_page = BooksPage()  # object of type BooksPage" to find actions
 
@@ -12,6 +13,20 @@ def step_impl(context):
 @when('books: I search after "{query}"')
 def step_impl(context, query):
     books_page.fill_search_input(query)
+    sleep(1)
+
+
+@when('books: I add to collection the book with title "{title}"')
+def step_impl(context, title):
+    books_page.click_book_by_title(title)
+    books_page.click_add_to_your_collection_button()
+    books_page.alert_ok()
+    books_page.click_back_to_book_store_button()
+
+
+@when('book: I clear search input')
+def step_impl(context):
+    books_page.clear_search_input()
 
 
 @then('books: I should land on books page')
